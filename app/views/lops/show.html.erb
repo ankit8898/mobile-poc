@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @lop.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @lop.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_lop_path(@lop) %> |
+<%= link_to 'Back', lops_path %>

@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120228041830) do
+ActiveRecord::Schema.define(:version => 20120228052457) do
+
+  create_table "lop_drafts", :force => true do |t|
+    t.integer "lop_id"
+    t.string  "name"
+    t.text    "description"
+  end
+
+  create_table "lops", :force => true do |t|
+    t.string "name"
+    t.text   "description"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
