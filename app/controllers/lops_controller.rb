@@ -48,6 +48,16 @@ class LopsController < ApplicationController
     respond_to do |format|
     format.html { redirect_to @lop, :notice => 'Draft Saved Succesfully' }
     end
+    else
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @lop, :notice => 'User was successfully created.' }
+        format.json { render :json => @lop, :status => :created, :location => @lop }
+      else
+        format.html { render :action => "new" }
+        format.json { render :json => @lop.errors, :status => :unprocessable_entity }
+      end
+    end
     end
    
   end
@@ -58,7 +68,9 @@ class LopsController < ApplicationController
     @lop = Lop.find(params[:id])
 
     respond_to do |format|
-      if @lop.update_attributes(params[:lop])
+      if @lop.draft.update_attributes(params[:lop])
+        @lop.replace_with_draft!
+        @lop.destroy_draft!
         format.html { redirect_to @lop, :notice => 'Lop was successfully updated.' }
         format.json { head :no_content }
       else
