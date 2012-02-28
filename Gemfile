@@ -7,7 +7,7 @@ gem 'rails', '3.2.1'
 
 #gem 'sqlite3'
 gem 'mysql'
-gem 'mobile-fu'
+gem 'mobile-fu',:git => 'git://github.com/benlangfeld/mobile-fu.git'
 gem 'has_draft'
 gem 'json'
 
